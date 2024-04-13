@@ -14,3 +14,6 @@ Temp/obj/Debug/Assembly-CSharp/Assembly-CSharp.csproj.nuget.g.targets
 Temp/obj/Debug/Assembly-CSharp/Assembly-CSharp.GeneratedMSBuildEditorConfig.editorconfig
 Temp/obj/Debug/Assembly-CSharp/project.assets.json
 Temp/obj/Debug/Assembly-CSharp/project.nuget.cache
+/Logs
+*.log
+/Temp
