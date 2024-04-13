@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
@@ -14,14 +15,12 @@ public class PlayerController : MonoBehaviour
 
     public GameObject SpherePrefab;  
 
-    Rigidbody rb; 
-
-    public float mouseSensitive; 
+    Rigidbody rb;  
     
     Transform cameraTransform; 
+    Vector3 moveDirection ; 
 
-    private Quaternion targetRotation; 
-
+    Vector3 mousePosition; 
     // Start is called before the first frame update
     void Start()
     {
@@ -35,13 +34,19 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+         moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
 
-        if (moveDirection != Vector3.zero)
-        {
-            Player.transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
-        }
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit ; 
 
+        if(Physics.Raycast(ray, out hit , 100)){
+                mousePosition = hit.point; 
+        } 
+
+        Vector3 lookdDir = mousePosition - transform.position;
+        lookdDir.y = 0f;
+        transform.LookAt(lookdDir+transform.position,Vector3.up); 
+  
        /* if(Input.GetKey(KeyCode.A)){
             Debug.Log("A"); 
             rb.AddForce((-Player.transform.right) * speed * Time.deltaTime);
@@ -60,22 +65,18 @@ public class PlayerController : MonoBehaviour
         }
         */
 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.y = 0f; // Wir setzen die Z-Koordinate auf 0, da wir uns in einer 2D-Szene befinden
-
-        // Die Richtung vom Spieler zur Maus berechnen
-        Vector3 direction = mousePosition - transform.position;
-        direction.Normalize();
-
-        // Die Rotation des Spielers setzen, um zur Maus zu zeigen
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Player.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        
-
         if(Input.GetMouseButtonDown(0)){
             GameObject sphere = Instantiate(SpherePrefab, Player.transform.position+Player.transform.forward, Quaternion.identity);
             Rigidbody sphereRb = sphere.GetComponent<Rigidbody>(); 
             sphereRb.AddForce(Player.transform.forward*1000);
          }
+    }
+
+    void FixedUpdate(){
+        if (moveDirection != Vector3.zero)
+        {
+            Player.transform.Translate(moveDirection * speed * Time.fixedDeltaTime, Space.World);
+        }
+
     }
 }
