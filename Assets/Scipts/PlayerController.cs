@@ -60,20 +60,17 @@ public class PlayerController : MonoBehaviour
         }
         */
 
-         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-        float rayDistance;
-        if (groundPlane.Raycast(ray, out rayDistance))
-        {
-            Vector3 mousePosition = ray.GetPoint(rayDistance);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.y = 0f; // Wir setzen die Z-Koordinate auf 0, da wir uns in einer 2D-Szene befinden
 
-            // Drehe den Spieler zur Mauszeigerposition
-            Vector3 direction = mousePosition - transform.position;
-            direction.y = 0; // Damit die Rotation nur um die Y-Achse erfolgt
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            Player.transform.rotation = lookRotation;
-        }
-         
+        // Die Richtung vom Spieler zur Maus berechnen
+        Vector3 direction = mousePosition - transform.position;
+        direction.Normalize();
+
+        // Die Rotation des Spielers setzen, um zur Maus zu zeigen
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Player.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        
 
         if(Input.GetMouseButtonDown(0)){
             GameObject sphere = Instantiate(SpherePrefab, Player.transform.position+Player.transform.forward, Quaternion.identity);
