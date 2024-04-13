@@ -14,10 +14,10 @@ public class CameraMovement : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform; 
     }
 
-    // Update is called once per frame
-    void Update()
+    // Update is called once per frames
+    void LateUpdate()
     {
-         cameraTarget = new Vector3(target.position.x,transform.position.y,target.position.y); 
-        transform.position = Vector3.Lerp(transform.position, cameraTarget,Time.deltaTime*20);
+        cameraTarget = new Vector3(target.position.x,transform.position.y,target.position.z); 
+        transform.position = Vector3.Lerp(transform.position, cameraTarget,Time.deltaTime*10);
     }
 }

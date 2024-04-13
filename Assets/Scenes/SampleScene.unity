@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 418032321}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,8 +229,7 @@ Transform:
   m_LocalPosition: {x: 5.1900005, y: 1.746, z: -5.11}
   m_LocalScale: {x: 0.82912, y: 0.82912, z: 0.82912}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 963194228}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &418032321
@@ -249,7 +248,6 @@ MonoBehaviour:
   Player: {fileID: 418032316}
   speed: 20
   SpherePrefab: {fileID: 4869197861385964987, guid: 71647677bac3c9140b3840c4725cbb95, type: 3}
-  mouseSensitive: 23
 --- !u!54 &418032322
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -275,7 +273,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &705507993
 GameObject:
@@ -382,6 +380,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -457,12 +456,24 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.22915813, y: 11.619549, z: -1.013122}
-  m_LocalScale: {x: 1.2060981, y: 1.206098, z: 1.206098}
+  m_LocalPosition: {x: 5.190001, y: 10, z: -5.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 418032320}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd2a8af0f8062447b6839599ff46b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1467857953
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,5 +585,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 705507995}
-  - {fileID: 1467857957}
+  - {fileID: 963194228}
   - {fileID: 418032320}
+  - {fileID: 1467857957}
