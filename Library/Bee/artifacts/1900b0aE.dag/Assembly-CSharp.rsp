@@ -354,6 +354,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.24f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scipts/CameraMovement.cs"
 "Assets/Scipts/EnemyBehavior.cs"
+"Assets/Scipts/HealthBar.cs"
 "Assets/Scipts/MainMenu.cs"
 "Assets/Scipts/PlayerController.cs"
 -langversion:9.0
