@@ -1,16 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using Unity.VisualScripting;
-using UnityEditor.Callbacks;
-using UnityEditor.Compilation;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
     public float dashTime; 
     public float dashSpeed; 
+
+    Vector3 dashDirection; 
 
     private Rigidbody rb;
 
@@ -26,7 +23,14 @@ public class Dash : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        float posX = Input.GetAxis("Horizontal");
+        float posZ = Input.GetAxis("Vertical");
+        Vector3 moveDirection = new Vector3(posX,0.0f , posZ);
+        if(moveDirection!=Vector3.zero){
+                dashDirection = moveDirection; 
+
+        }
         if(Input.GetKeyDown(dash)){
             StartCoroutine(movementDash()); 
         }
@@ -34,16 +38,10 @@ public class Dash : MonoBehaviour
 
     IEnumerator movementDash(){
          float startTime = Time.time; 
-    Vector3 originalVelocity = rb.velocity.normalized; // Normalize to keep direction but ignore current speed
-    rb.velocity = Vector3.zero; // Optional: Reset velocity to start fresh with the dash
-
     while (Time.time < startTime + dashTime)
     { 
-        rb.AddForce(originalVelocity * dashSpeed, ForceMode.Impulse); // Apply the force as an impulse
+        rb.AddForce(dashDirection * dashSpeed, ForceMode.Impulse); // Apply the force as an impulse
         yield return null;
     }
-
-    // Optional: Reset the velocity after the dash
-    rb.velocity = originalVelocity * (rb.velocity.magnitude / dashSpeed); // Slow down to original speed
     }
 }
