@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 418032317}
   - component: {fileID: 418032322}
   - component: {fileID: 418032321}
+  - component: {fileID: 418032323}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -314,7 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194227}
   Player: {fileID: 418032316}
-  speed: 20
+  speed: 10
   SpherePrefab: {fileID: 4869197861385964987, guid: 71647677bac3c9140b3840c4725cbb95, type: 3}
 --- !u!54 &418032322
 Rigidbody:
@@ -343,6 +344,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &418032323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418032316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4702d8ca90b6a419c0c1ee8ab8ec8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashTime: 0.5
+  dashSpeed: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

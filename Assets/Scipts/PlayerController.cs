@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     public GameObject Player;
     
     public float speed; 
-
     public GameObject SpherePrefab;  
 
     Rigidbody rb;  
@@ -35,7 +34,7 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
          moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-
+        rb.AddForce(moveDirection*speed*Time.deltaTime); 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit ; 
 
