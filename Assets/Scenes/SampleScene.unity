@@ -840,6 +840,7 @@ GameObject:
   - component: {fileID: 1572093288}
   - component: {fileID: 1572093287}
   - component: {fileID: 1572093291}
+  - component: {fileID: 1572093292}
   - component: {fileID: 1572093286}
   m_Layer: 0
   m_Name: Enemy
@@ -868,7 +869,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 0
-  walkPoint: {x: 0, y: 0, z: 0}
+  walkPoint: {x: 1223, y: 0, z: 22}
   walkPointRange: 11
   timeBetweenAttacks: 0.1
   sightRange: 0.1
@@ -983,6 +984,33 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &1572093292
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572093285}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1590268412
 GameObject:
   m_ObjectHideFlags: 0

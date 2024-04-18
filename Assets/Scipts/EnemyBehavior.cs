@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -48,7 +49,7 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     public void Awake(){
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -82,7 +83,9 @@ public class EnemyBehavior : MonoBehaviour
      private void Attacking(){
         agent.SetDestination(transform.position);
         transform.LookAt(player);
+
         if(!alreadyAttacked){
+            
             alreadyAttacked =true;
             Invoke(nameof(ResetAttack),timeBetweenAttacks);
         }

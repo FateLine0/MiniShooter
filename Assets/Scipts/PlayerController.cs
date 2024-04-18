@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;  
     
-    Transform cameraTransform; 
+    //Transform cameraTransform; 
     Vector3 moveDirection ; 
 
     Vector3 mousePosition; 
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = Player.GetComponent<Rigidbody>();
-        cameraTransform = Player.transform.GetChild(0).GetComponent<Transform>();
+        //cameraTransform = Player.transform.GetChild(0).GetComponent<Transform>();
     }
 
     // Update is called once per frame
